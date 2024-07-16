@@ -1,12 +1,18 @@
 # Ranch Management System
 Overview
 This project is a simple Ranch Management System built using React.js. It allows users to add ranch data, store it locally using localStorage, and display the ranch data with pagination.
-![Home Screen](https://github.com/user-attachments/assets/ad4b7fad-fd49-42ea-ba65-966a23b53e06)
 
 # Features 
 
  Add Ranch: Users can enter details about a ranch including name, contact information, location, etc., and save it.
+ ![add](https://github.com/user-attachments/assets/4d93cb81-268b-4efb-9607-686f89ee1acd)
+
 Display Ranch: View all entered ranches with pagination to manage large datasets effectively.
+![Home Screen](https://github.com/user-attachments/assets/b816c772-7e1c-4c92-a26e-501011984c91)
+
+Validation 
+![validation](https://github.com/user-attachments/assets/c5a01c7b-01f5-4c4f-87d4-a7bc6f0f7ff6)
+
 LocalStorage: Utilizes browser's localStorage for data persistence between sessions.
 
 # Technologies Used
