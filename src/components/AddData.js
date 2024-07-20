@@ -57,16 +57,25 @@ function AddData() {
         setErrors(tempErrors);
         return Object.keys(tempErrors).length === 0;
     };
-
     const handleAddData = (e) => {
         e.preventDefault();
         if (validate()) {
-            const newRanch = { ...formData };
+            const storedData = JSON.parse(localStorage.getItem('ranchData')) || [];
+            
+            // Check if email already exists
+            const emailExists = storedData.some(ranch => ranch.email === formData.email);
+            if (emailExists) {
+                setErrors(prevErrors => ({
+                    ...prevErrors,
+                    email: 'Email ID already registered'
+                }));
+                return;
+            }
 
+            const newRanch = { ...formData };
             setRanches([...ranches, newRanch]);
 
             // Store data in localStorage
-            const storedData = JSON.parse(localStorage.getItem('ranchData')) || [];
             storedData.push(newRanch);
             localStorage.setItem('ranchData', JSON.stringify(storedData));
 
@@ -88,6 +97,39 @@ function AddData() {
             navigate('/');
         }
     };
+
+    // const handleAddData = (e) => {
+    //     e.preventDefault();
+    //     if (validate()) {
+    //         const newRanch = { ...formData };
+
+    //         setRanches([...ranches, newRanch]);
+
+    //         // Store data in localStorage
+    //         const storedData = JSON.parse(localStorage.getItem('ranchData')) || [];
+    //         storedData.push(newRanch);
+    //         localStorage.setItem('ranchData', JSON.stringify(storedData));
+
+    //         // Clear form fields after submission
+    //         setFormData({
+    //             name: '',
+    //             description: '',
+    //             areaSize: '',
+    //             contactPerson: '',
+    //             email: '',
+    //             phoneNumber: '',
+    //             city: '',
+    //             state: '',
+    //             zipCode: '',
+    //             additionalDetails: ''
+    //         });
+
+    //         alert('New Ranch Added Successfully!!!');
+    //         navigate('/');
+    //     }
+    // };
+
+
 
     return (
         <div className="container-fluid">
