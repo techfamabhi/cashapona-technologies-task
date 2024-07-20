@@ -34,21 +34,22 @@ function AddData() {
         let tempErrors = {};
         const regnumExp = /^[0-9]{10}$/;
         const emailExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        const stringonly= /^[a-zA-Z]*$/;
-        
+       const stringWithSpace = /^[a-zA-Z\s]*$/;
+
+
         if (!formData.name) tempErrors.name = 'Required';
-        else if (!stringonly.test(formData.name)) tempErrors.name = 'Invalid name Format accept only string';
+        else if (!stringWithSpace.test(formData.name)) tempErrors.name = 'Invalid name Format accept only string';
 
         if (!formData.description) tempErrors.description = 'Required';
         if (!formData.areaSize) tempErrors.areaSize = 'Required';
         if (!formData.contactPerson) tempErrors.contactPerson = 'Required';
-        else if (!stringonly.test(formData.contactPerson)) tempErrors.contactPerson = 'Invalid contactPerson Format accept only string';
+        else if (!stringWithSpace.test(formData.contactPerson)) tempErrors.contactPerson = 'Invalid contactPerson Format accept only string';
         if (!formData.email) tempErrors.email = 'Required';
         else if (!emailExp.test(formData.email)) tempErrors.email = 'Invalid Email Format';
         if (!formData.phoneNumber) tempErrors.phoneNumber = 'Required';
         else if (!regnumExp.test(formData.phoneNumber)) tempErrors.phoneNumber = 'Must be a 10 digit number';
         if (!formData.city) tempErrors.city = 'Required';
-        else if (!stringonly.test(formData.city)) tempErrors.city = 'Invalid city Format accept only string';
+        else if (!stringWithSpace.test(formData.city)) tempErrors.city = 'Invalid city Format accept only string';
 
         if (!formData.state) tempErrors.state = 'Required';
         if (!formData.zipCode) tempErrors.zipCode = 'Required';
